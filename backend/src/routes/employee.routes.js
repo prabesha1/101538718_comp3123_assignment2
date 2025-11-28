@@ -11,20 +11,23 @@ router.use(auth);
 // POST /employees  (with file)
 router.post('/', upload.single('profileImage'), async (req, res) => {
   try {
-    const { firstName, lastName, email, department, position } = req.body;
+    const { first_name, last_name, email, department, position, salary, date_of_joining } = req.body;
 
     const employee = await Employee.create({
-      firstName,
-      lastName,
+      first_name,
+      last_name,
       email,
       department,
       position,
+      salary,
+      date_of_joining,
       profileImage: req.file ? `/uploads/${req.file.filename}` : undefined,
     });
 
     res.status(201).json(employee);
   } catch (err) {
-    res.status(500).json({ message: 'Error creating employee' });
+    console.error('Error creating employee:', err);
+    res.status(500).json({ message: 'Error creating employee', error: err.message });
   }
 });
 
