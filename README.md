@@ -133,7 +133,3 @@ Prabesh Shrestha - Student ID: 101538718
 COMP3123 - Full Stack Development  
 George Brown College
 
-## License
-
-This project is for educational purposes.
-
